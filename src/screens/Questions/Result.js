@@ -92,20 +92,20 @@ const Result = ({ navigation, route }) => {
         </View>
       )}
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
-        <View className="flex flex-col items-center justify-center py-[6rem]">
+        <View className="flex flex-col items-center justify-center py-[6rem] px-6">
           {result ? (
             <>
               {imageUri ? (
                 <Image
                   source={{ uri: imageUri }}
-                  className="h-[200px] w-[300px] rounded-lg"
-                  resizeMode="cover"
+                  className="h-[300px] w-full rounded-lg"
+                  resizeMode="contain"
                 />
               ) : (
                 <Image
                   source={resultImage}
-                  className="h-[200px] w-[300px] rounded-lg"
-                  resizeMode="cover"
+                  className="h-[300px] w-full rounded-lg"
+                  resizeMode="contain"
                 />
               )}
               <Text className="text-center text-lg font-bold mt-4">
