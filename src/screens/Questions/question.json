@@ -1,0 +1,124 @@
+[
+  {
+    "category": "General Information",
+    "questions": [
+      {
+        "question": "What is the size of the plot?",
+        "options": [
+          "Small (1000-2000 sq ft)",
+          "Medium (2000-5000 sq ft)",
+          "Large (5000-10,000 sq ft)",
+          "Extra Large (10,000+ sq ft)"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Design Preferences",
+    "questions": [
+      {
+        "question": "Which architectural style do you prefer?",
+        "options": ["Modern", "Traditional", "Mediterranean", "Minimalist"]
+      },
+      {
+        "question": "How many floors do you want?",
+        "options": [
+          "Single Story",
+          "Two Stories",
+          "Three Stories",
+          "More than Three Stories"
+        ]
+      },
+      {
+        "question": "What key rooms are required?",
+        "options": [
+          "Bedrooms and Bathrooms",
+          "Kitchen and Dining",
+          "Living Room and Study",
+          "All of the Above"
+        ]
+      },
+      {
+        "question": "Which architectural style do you prefer?",
+        "options": ["Modern", "Traditional", "Mediterranean", "Minimalist"]
+      }
+    ]
+  },
+  {
+    "category": "Outdoor Spaces",
+    "questions": [
+      {
+        "question": "Do you need outdoor spaces?",
+        "options": ["Garden", "Swimming Pool", "Terrace/Patio", "No Outdoor Space"]
+      },
+      {
+        "question": "Do you require parking space?",
+        "options": [
+          "Single Car Garage",
+          "Double Car Garage",
+          "Open Parking",
+          "No Parking Required"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Luxury and Special Features",
+    "questions": [
+      {
+        "question": "What luxury features would you like to include?",
+        "options": ["Home Theater", "Gym", "Spa", "None"]
+      },
+      {
+        "question": "Do you have preferences for construction materials?",
+        "options": ["Brick", "Wood", "Concrete", "Glass"]
+      },
+      {
+        "question": "Should the design include sustainability features?",
+        "options": [
+          "Solar Panels",
+          "Rainwater Harvesting",
+          "Energy-Efficient Windows",
+          "No Sustainability Features"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Lighting and Ventilation",
+    "questions": [
+      {
+        "question": "What kind of lighting do you prefer?",
+        "options": [
+          "Large Windows",
+          "Skylights",
+          "Ambient Lighting",
+          "Smart Lighting System"
+        ]
+      },
+      {
+        "question": "What kind of ventilation do you prefer?",
+        "options": [
+          "Natural Ventilation",
+          "HVAC System",
+          "Combination of Both",
+          "No Preference"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Additional Features",
+    "questions": [
+      {
+        "question": "Are there any additional features you would like?",
+        "options": [
+          "Rooftop Garden",
+          "Courtyard",
+          "Open-Plan Interiors",
+          "None"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "outcome": {
+      "architecturalStyle": "Modern",
+      "floors": "Single Story"
+    },
+    "image": "/assets/images/singlestory",
+    "description": "A Modern Single Story house.",
+    "details": {
+      "keyFeatures": [
+        "Flat Roof Design for a modern and sleek look.",
+        "Large Glass Windows to enhance natural lighting.",
+        "Minimalistic Exterior with a blend of wood and stone materials."
+      ],
+      "functionalHighlights": [
+        "Compact Garage suitable for a single vehicle.",
+        "Landscaped Front Yard with easy-to-maintain shrubs."
+      ],
+      "usability": [
+        "Ideal for Small Families or 2-3 residents.",
+        "Single-level structure, perfect for accessibility."
+      ],
+      "customizationOptions": [
+        "Add a Rooftop Garden for extra greenery.",
+        "Upgrade Glass Windows for better energy efficiency."
+      ]
+    }
+  },
+  {
+    "outcome": {
+      "architecturalStyle": "Modern",
+      "floors": "Two Stories"
+    },
+    "image": "/assets/images/twostory.webp",
+    "description": "A Modern Two Stories house.",
+    "details": {
+      "keyFeatures": [
+        "Contemporary double-story design with sleek geometry.",
+        "Expansive Glass Windows for abundant natural light.",
+        "Stylish Exterior combining stone, wood, and modern finishes."
+      ],
+      "functionalHighlights": [
+        "Spacious Garage with frosted glass doors.",
+        "Landscaped Front Yard featuring drought-resistant plants."
+      ],
+      "usability": [
+        "Perfect for medium-sized families seeking privacy and functionality.",
+        "Separate living spaces across floors for enhanced convenience."
+      ],
+      "customizationOptions": [
+        "Add a rooftop deck for outdoor entertainment.",
+        "Install a smart home system for enhanced automation."
+      ]
+    }
+  },
+  {
+    "outcome": {
+      "architecturalStyle": "Modern",
+      "floors": "Three Stories"
+    },
+    "image": "/assets/images/threestory.webp",
+    "description": "A Modern Three Stories house.",
+    "details": {
+      "keyFeatures": [
+        "Elegant three-story design with sharp, clean lines.",
+        "Floor-to-ceiling Glass Windows for maximum natural light and views.",
+        "Contemporary mix of wood and concrete finishes for a sophisticated look."
+      ],
+      "functionalHighlights": [
+        "Double Garage with modern panel design.",
+        "Private balconies for relaxation on upper floors."
+      ],
+      "usability": [
+        "Ideal for larger families or those seeking additional living space.",
+        "Separate floors provide privacy and dedicated areas for work, leisure, and family time."
+      ],
+      "customizationOptions": [
+        "Add a rooftop terrace for panoramic views.",
+        "Incorporate a small elevator for convenience and accessibility."
+      ]
+    }
+  },
+  {
+    "outcome": {
+      "architecturalStyle": "Modern",
+      "floors": "More than Three Stories"
+    },
+    "image": "/assets/images/more.webp",
+    "description": "A Modern house with More than Three Stories.",
+    "details": {
+      "keyFeatures": [
+        "Expansive multi-story design for maximum living and utility space.",
+        "Modern facade featuring a combination of wood, stone, and glass elements.",
+        "Large Glass Windows for an open and airy feel."
+      ],
+      "functionalHighlights": [
+        "Spacious Garage with contemporary glass-paneled doors.",
+        "Landscaped surroundings with mature trees and a well-designed driveway."
+      ],
+      "usability": [
+        "Perfect for multi-generational families or those requiring extensive living spaces.",
+        "Ideal for creating multiple private areas for living, work, and recreation."
+      ],
+      "customizationOptions": [
+        "Add a rooftop garden for additional greenery and leisure.",
+        "Upgrade the outdoor space with a pool or patio area."
+      ]
+    }
+  }
+]
