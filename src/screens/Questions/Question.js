@@ -1,6 +1,6 @@
 import "nativewind";
 import React, { useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, ScrollView } from "react-native";
 import Button from "../../components/Button/IconButton";
 import OptionButton from "../../components/Button/OptionButton";
 import Header from "../../components/Header/Question_Header";
@@ -51,7 +51,7 @@ const CFAssignment = ({ navigation }) => {
         const floorsAnswer = answers.find((answer) =>
           answer.question.toLowerCase().includes("floors")
         );
-        navigation.navigate("Result", { answers: floorsAnswer });
+        navigation.navigate("Result", { answers: answers });
         console.log(floorsAnswer);
       }
     }
@@ -69,26 +69,28 @@ const CFAssignment = ({ navigation }) => {
         custom_css="bg-transparent"
         navigation={navigation}
       />
-      <View className="flex items-center w-full h-full pt-20">
-        <View className="flex w-full items-center gap-y-2">
-          <Text className="text-4xl font-semibold text-center text-[#4F3422]">
-            {currentQuestion.question}
-          </Text>
+      <ScrollView>
+        <View className="flex items-center w-full h-full pt-20">
+          <View className="flex w-full items-center gap-y-2">
+            <Text className="text-4xl font-semibold text-center text-[#4F3422]">
+              {currentQuestion.question}
+            </Text>
+          </View>
+          <View className="gap-y-4 w-full py-12">
+            {currentQuestion.options.map((option, index) => (
+              <OptionButton
+                key={index}
+                label={option}
+                color="#FFBE16"
+                border="#FFBE16"
+                isSelected={selectedOption === option}
+                onPress={() => handleOptionSelect(option)}
+              />
+            ))}
+          </View>
+          <Button text="Continue" icon={right_arrow} onPress={handleContinue} />
         </View>
-        <View className="gap-y-4 w-full py-12">
-          {currentQuestion.options.map((option, index) => (
-            <OptionButton
-              key={index}
-              label={option}
-              color="#FFBE16"
-              border="#FFBE16"
-              isSelected={selectedOption === option}
-              onPress={() => handleOptionSelect(option)}
-            />
-          ))}
-        </View>
-        <Button text="Continue" icon={right_arrow} onPress={handleContinue} />
-      </View>
+      </ScrollView>
     </ImageBackground>
   );
 };

@@ -1,6 +1,13 @@
 import "nativewind";
-import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Modal,
+  ActivityIndicator,
+} from "react-native";
 import Header from "../../components/Header/Back_Header";
 import outcomes from "./Result.json";
 import normal from "../../../assets/images/default.jpg";
@@ -8,6 +15,7 @@ import singlestory from "../../../assets/images/singlestory.png";
 import twostory from "../../../assets/images/twostory.png";
 import threestory from "../../../assets/images/threestory.png";
 import more from "../../../assets/images/more.png";
+import { generateImage } from "../../api/GenerateImage";
 
 // Map answer options to image imports
 const images = {
@@ -19,9 +27,30 @@ const images = {
 
 const Result = ({ navigation, route }) => {
   const userAnswers = route.params?.answers;
+  const [imageUri, setImageUri] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   // Debugging - Log the received user answers
   console.log("Received userAnswers:", userAnswers);
+  useEffect(() => {
+    getUserImage();
+  }, []);
+
+  const getUserImage = async () => {
+    setLoading(true);
+    try {
+      const response = await generateImage(userAnswers);
+      console.log("response of appi", response);
+      if (response.success) {
+        setImageUri(response.imageUrl);
+      } else {
+        setError(response.error || "Failed to generate image.");
+      }
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getMatchingResult = (answers) => {
     return (
@@ -56,20 +85,36 @@ const Result = ({ navigation, route }) => {
         navigation={navigation}
         custom_css="px-6"
       />
+      {loading && (
+        <View className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <ActivityIndicator size="large" color="#ffffff" />
+          <Text className="text-white text-lg mt-4">Generating Design...</Text>
+        </View>
+      )}
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
         <View className="flex flex-col items-center justify-center py-[6rem]">
           {result ? (
             <>
-              <Image
-                source={resultImage}
-                className="h-[200px] w-[300px] rounded-lg"
-                resizeMode="cover"
-              />
+              {imageUri ? (
+                <Image
+                  source={{ uri: imageUri }}
+                  className="h-[200px] w-[300px] rounded-lg"
+                  resizeMode="cover"
+                />
+              ) : (
+                <Image
+                  source={resultImage}
+                  className="h-[200px] w-[300px] rounded-lg"
+                  resizeMode="cover"
+                />
+              )}
               <Text className="text-center text-lg font-bold mt-4">
                 {result.description}
               </Text>
               <View className="mt-6 px-4">
-                <Text className="text-lg font-semibold mb-2">Key Features:</Text>
+                <Text className="text-lg font-semibold mb-2">
+                  Key Features:
+                </Text>
                 {result.details.keyFeatures.length > 0 ? (
                   result.details.keyFeatures.map((feature, index) => (
                     <Text key={index} className="text-base text-gray-600">
@@ -86,11 +131,13 @@ const Result = ({ navigation, route }) => {
                   Functional Highlights:
                 </Text>
                 {result.details.functionalHighlights.length > 0 ? (
-                  result.details.functionalHighlights.map((highlight, index) => (
-                    <Text key={index} className="text-base text-gray-600">
-                      - {highlight}
-                    </Text>
-                  ))
+                  result.details.functionalHighlights.map(
+                    (highlight, index) => (
+                      <Text key={index} className="text-base text-gray-600">
+                        - {highlight}
+                      </Text>
+                    )
+                  )
                 ) : (
                   <Text className="text-base text-gray-600">
                     No functional highlights available.
@@ -116,13 +163,11 @@ const Result = ({ navigation, route }) => {
                   Customization Options:
                 </Text>
                 {result.details.customizationOptions.length > 0 ? (
-                  result.details.customizationOptions.map(
-                    (option, index) => (
-                      <Text key={index} className="text-base text-gray-600">
-                        - {option}
-                      </Text>
-                    )
-                  )
+                  result.details.customizationOptions.map((option, index) => (
+                    <Text key={index} className="text-base text-gray-600">
+                      - {option}
+                    </Text>
+                  ))
                 ) : (
                   <Text className="text-base text-gray-600">
                     No customization options available.
