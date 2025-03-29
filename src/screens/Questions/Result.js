@@ -7,6 +7,7 @@ import {
   ScrollView,
   Modal,
   ActivityIndicator,
+  TouchableOpacity,
 } from "react-native";
 import Header from "../../components/Header/Back_Header";
 import outcomes from "./Result.json";
@@ -39,14 +40,40 @@ const Result = ({ navigation, route }) => {
   const getUserImage = async () => {
     setLoading(true);
     try {
-      const response = await generateImage(userAnswers);
-      console.log("response of appi", response);
+      // Construct the prompt based on user answers
+      const prompt = constructPrompt(userAnswers);
+      console.log("Generated Prompt:", prompt);
+
+      const response = await generateImage(prompt);
+      console.log("API Response:", response);
+
       if (response.success) {
         setImageUri(response.imageUrl);
       } else {
         setError(response.error || "Failed to generate image.");
       }
     } catch (error) {
+      console.error("Error generating image:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const getGeneralImage = async () => {
+    setLoading(true);
+    try {
+      const generalPrompt = constructGeneralPrompt(userAnswers);
+      console.log("General Prompt:", generalPrompt);
+
+      const response = await generateImage(generalPrompt);
+      console.log("General API Response:", response);
+
+      if (response.success) {
+        setImageUri(response.imageUrl);
+      } else {
+        console.error(response.error || "Failed to generate image.");
+      }
+    } catch (error) {
+      console.error("Error generating general image:", error);
     } finally {
       setLoading(false);
     }
@@ -67,6 +94,72 @@ const Result = ({ navigation, route }) => {
         },
       }
     );
+  };
+  const constructGeneralPrompt = (answers) => {
+    const plotSize =
+      answers.find((a) => a.question === "What is the size of the plot?")
+        ?.answer || "Medium";
+    const homeType =
+      answers.find(
+        (a) => a.question === "Which architectural style do you prefer?"
+      )?.answer || "Modern";
+
+    return `A beautiful ${homeType} house designed for a ${plotSize} plot. Top-down architectural view.`;
+  };
+  const constructPrompt = (answers) => {
+    const plotSize =
+      answers.find((a) => a.question === "What is the size of the plot?")
+        ?.answer || "Medium";
+    const homeType =
+      answers.find(
+        (a) => a.question === "Which architectural style do you prefer?"
+      )?.answer || "Modern";
+    const floors =
+      answers.find((a) => a.question === "How many floors do you want?")
+        ?.answer || "Two Stories";
+    const rooms =
+      answers.find((a) => a.question === "What key rooms are required?")
+        ?.answer || "Living Room, Kitchen";
+    const outdoorSpace =
+      answers.find((a) => a.question === "Do you need outdoor spaces?")
+        ?.answer || "No";
+    const parking =
+      answers.find((a) => a.question === "Do you require parking space?")
+        ?.answer || "No";
+    const luxuryFeatures =
+      answers.find(
+        (a) => a.question === "What luxury features would you like to include?"
+      )?.answer || "None";
+    const materials =
+      answers.find(
+        (a) =>
+          a.question === "Do you have preferences for construction materials?"
+      )?.answer || "Standard";
+    const sustainability =
+      answers.find(
+        (a) =>
+          a.question === "Should the design include sustainability features?"
+      )?.answer || "No";
+    const lighting =
+      answers.find((a) => a.question === "What kind of lighting do you prefer?")
+        ?.answer || "Standard";
+    const ventilation =
+      answers.find(
+        (a) => a.question === "What kind of ventilation do you prefer?"
+      )?.answer || "Standard";
+
+    let length = 80,
+      width = 60;
+    if (plotSize === "Large (5000-10,000 sq ft)") {
+      length = 100;
+      width = 80;
+    }
+
+    return `A ${floors} ${homeType} house design with a width of ${width}ft and length of ${length}ft. 
+    It includes a ${rooms}, an outdoor ${outdoorSpace}, and ${parking} parking. 
+    Features: ${luxuryFeatures}, built with ${materials}, incorporating ${sustainability} features. 
+    Lighting: ${lighting}, Ventilation: ${ventilation}. 
+    Top view architectural layout with realistic details.`;
   };
 
   // Find the matching result based on user answers
@@ -108,6 +201,17 @@ const Result = ({ navigation, route }) => {
                   resizeMode="contain"
                 />
               )}
+              <TouchableOpacity
+                className="text-center bg-blue-500 mt-12 rounded-lg p-5"
+                onPress={() => getGeneralImage()}
+              >
+                <Text
+                  style={{ color: "#fff", fontSize: 18 }}
+                  className="font-bold"
+                >
+                  Get 1D View
+                </Text>
+              </TouchableOpacity>
               <Text className="text-center text-lg font-bold mt-4">
                 {result.description}
               </Text>
