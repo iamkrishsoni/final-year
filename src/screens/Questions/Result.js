@@ -212,9 +212,25 @@ const Result = ({ navigation, route }) => {
                   Get 1D View
                 </Text>
               </TouchableOpacity>
-              <Text className="text-center text-lg font-bold mt-4">
+
+              <TouchableOpacity
+                className="text-center bg-blue-500 mt-12 rounded-lg p-5"
+                onPress={() =>
+                  navigation.navigate("HouseViewerScreen", {
+                    modelKey: "home",
+                  })
+                }
+              >
+                <Text
+                  style={{ color: "#fff", fontSize: 18 }}
+                  className="font-bold"
+                >
+                  3D View
+                </Text>
+              </TouchableOpacity>
+              {/* <Text className="text-center text-lg font-bold mt-4">
                 {result.description}
-              </Text>
+              </Text> */}
             </>
           ) : (
             <Text className="text-center text-lg font-bold mt-4">

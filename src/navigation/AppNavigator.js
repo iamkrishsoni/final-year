@@ -6,6 +6,7 @@ import WelcomeScreen from "../screens/LoadingScreen/WelcomeScreen";
 import SelectMode from "../screens/LoadingScreen/SelectMode";
 import Question from "../screens/Questions/Question";
 import Result from "../screens/Questions/Result";
+import HouseViewerScreen from "../screens/Questions/viewscreen";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const AppNavigator = () => (
       <Stack.Screen name="SelectMode" component={SelectMode} />
       <Stack.Screen name="Question" component={Question} />
       <Stack.Screen name="Result" component={Result} />
+      <Stack.Screen name="HouseViewerScreen" component={HouseViewerScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

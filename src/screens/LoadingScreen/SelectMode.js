@@ -7,8 +7,6 @@ import residential from "../../../assets/images/residential.png";
 import commercial from "../../../assets/images/commercial.png";
 
 const SelectMode = ({ navigation }) => {
-  const [mode, setMode] = useState(null);
-
   return (
     <View className="h-full w-full flex px-6 bg-[#F7F4F2]">
       <Header title="Design Type" navigation={navigation} />
