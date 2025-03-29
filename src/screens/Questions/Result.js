@@ -111,69 +111,6 @@ const Result = ({ navigation, route }) => {
               <Text className="text-center text-lg font-bold mt-4">
                 {result.description}
               </Text>
-              <View className="mt-6 px-4">
-                <Text className="text-lg font-semibold mb-2">
-                  Key Features:
-                </Text>
-                {result.details.keyFeatures.length > 0 ? (
-                  result.details.keyFeatures.map((feature, index) => (
-                    <Text key={index} className="text-base text-gray-600">
-                      - {feature}
-                    </Text>
-                  ))
-                ) : (
-                  <Text className="text-base text-gray-600">
-                    No key features available.
-                  </Text>
-                )}
-
-                <Text className="text-lg font-semibold mt-4 mb-2">
-                  Functional Highlights:
-                </Text>
-                {result.details.functionalHighlights.length > 0 ? (
-                  result.details.functionalHighlights.map(
-                    (highlight, index) => (
-                      <Text key={index} className="text-base text-gray-600">
-                        - {highlight}
-                      </Text>
-                    )
-                  )
-                ) : (
-                  <Text className="text-base text-gray-600">
-                    No functional highlights available.
-                  </Text>
-                )}
-
-                <Text className="text-lg font-semibold mt-4 mb-2">
-                  Usability:
-                </Text>
-                {result.details.usability.length > 0 ? (
-                  result.details.usability.map((item, index) => (
-                    <Text key={index} className="text-base text-gray-600">
-                      - {item}
-                    </Text>
-                  ))
-                ) : (
-                  <Text className="text-base text-gray-600">
-                    No usability information available.
-                  </Text>
-                )}
-
-                <Text className="text-lg font-semibold mt-4 mb-2">
-                  Customization Options:
-                </Text>
-                {result.details.customizationOptions.length > 0 ? (
-                  result.details.customizationOptions.map((option, index) => (
-                    <Text key={index} className="text-base text-gray-600">
-                      - {option}
-                    </Text>
-                  ))
-                ) : (
-                  <Text className="text-base text-gray-600">
-                    No customization options available.
-                  </Text>
-                )}
-              </View>
             </>
           ) : (
             <Text className="text-center text-lg font-bold mt-4">
